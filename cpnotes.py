@@ -2,20 +2,20 @@
 # into bulleted notes
 
 import os
-import pyperclip
+import pyperclip # pip install pyperclip
 import time
 
 
 def start():
     print("Initializing.....")
-    time.sleep(4)
+    time.sleep(2.5)
     print("Done!\n")
     print("Cleaning System Clipboard.....")
     pyperclip.copy(False)
-    time.sleep(3)
+    time.sleep(1.5)
     print("Done!\n")
 
-
+# This function extracts the name of the user account
 def UserDir():
     cwd = os.getcwd()
     list_dir = os.listdir("C:\\Users")
@@ -44,7 +44,7 @@ header()
 
 while True:
     try:
-
+        
         pn = open(f"C:\\Users\\{UserDir()}\\Desktop\\{fname}.txt", 'a')
         if pyperclip.paste() == 'False':
             time.sleep(1)
