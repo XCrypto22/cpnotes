@@ -4,6 +4,7 @@
 import os
 import pyperclip # pip install pyperclip
 import time
+from pathlib import Path
 
 
 def start():
@@ -15,18 +16,13 @@ def start():
     time.sleep(1.5)
     print("Done!\n")
 
-# This function extracts the name of the user account
+# This function extracts the name of the user account - for debugging
 def UserDir():
-    cwd = os.getcwd()
-    list_dir = os.listdir("C:\\Users")
-    name = os.path.dirname(cwd).split(os.path.sep)
-    user = ""
+   
+    home = str(Path.home())
+    name = home.split('\\')[-1]
 
-    for j in list_dir:
-        if j in name:
-            user += j
-
-    return user
+    return name
 
 
 def header():
@@ -45,7 +41,7 @@ header()
 while True:
     try:
         
-        pn = open(f"C:\\Users\\{UserDir()}\\Desktop\\{fname}.txt", 'a')
+        pn = open(f"{os.path.expanduser('~')}\\Desktop\\{fname}.txt", 'a')
         if pyperclip.paste() == 'False':
             time.sleep(1)
             continue
